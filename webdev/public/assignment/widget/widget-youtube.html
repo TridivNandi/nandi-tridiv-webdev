@@ -2,9 +2,64 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Widget Edit</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="../css/style.css" rel="stylesheet"/>
 </head>
 <body>
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-text pull-left">
+            <a href="../website/website-list.html">
+                <span class="glyphicon glyphicon-chevron-left navbar-glyphicon"></span>
+            </a>
+        </div>
+        <div class="navbar-header pull-left">
+            <a class="navbar-brand " href="widget-list.html">Widget Edit</a>
+        </div>
+        <div class="navbar-text pull-right">
+            <a  href="widget-list.html">
+                <span class="glyphicon glyphicon-ok navbar-glyphicon "></span>
+            </a>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+
+    <label for="name">Name</label>
+    <input id = "name"type="text"
+           class="form-control"
+           placeholder="name"/>
+
+    <label for="name">Text</label>
+    <input id = "Text"type="text"
+           class="form-control"
+           placeholder="content"/>
+
+    <label for="name">URL</label>
+    <input id = "URL"type="url"
+           class="form-control"
+           placeholder="http://www.abc.com"/>
+
+    <label for="Width">Width</label>
+    <input id = "Width"type="number"
+           class="form-control"
+           placeholder="size"/>
+
+    <a class="btn btn-danger  btn-block"
+       href="widget-list.html">Delete</a>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right">
+            <a href="../user/profile.html">
+                <span class="glyphicon glyphicon-user navbar-glyphicon"></span></a>
+        </div>
+    </div>
+</nav>
 
 </body>
 </html>
