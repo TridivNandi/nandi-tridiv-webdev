@@ -34,6 +34,22 @@ body {
     opacity: 0.7;
 }
 
+.scroll {
+    border-style: solid;
+    border-width: 0px;
+    border-right-width: 1px;
+    border-color: lightgray;
+    overflow-y: visible;
+    top: 0px;
+    bottom: 0px;
+    position: absolute;
+    left: 0px;
+    margin-top: 50px;
+    padding-top: 15px;
+    margin-bottom: 50px;
+"
+}
+
 
 
 
