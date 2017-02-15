@@ -32,13 +32,28 @@
             })
             .when("/user/:uid/website/new", {
                 templateUrl: "website/templates/website-new.view.client.html",
-                controller: "WebsiteListController",
+                controller: "WebsiteNewController",
                 controllerAs: "model"
             })
             .when("/user/:uid/website/:wid", {
                 templateUrl: "website/templates/website-edit.view.client.html",
                 controller: "WebsiteEditController",
                 controllerAs: "model"
+            })
+            .when("/user/:uid/website/:wid/page",{
+                templateUrl:"page/templates/page-list.view.client.html",
+                controller:"PageListController",
+                controllerAs: "model"
+            })
+            .when("/user/:uid/website/:wid/page/new",{
+                templateUrl:"page/templates/page-new.view.client.html",
+                controller:"PageNewController",
+                controllerAs: "model"
+            })
+            .when("/user/:uid/website/:wid/page/:pid",{
+                templateUrl:"page/templates/page-edit.view.client.html",
+                controller:"PageEditController",
+                controllerAs:"model"
             })
             // TODO: complete website routes
             // TODO: create page routes
