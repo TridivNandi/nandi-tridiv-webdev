@@ -1,69 +1,61 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-text pull-left">
-            <a href="../../page/templates/page-list.view.client.html">
+            <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget">
                 <span class="glyphicon glyphicon-chevron-left navbar-glyphicon"></span>
             </a>
         </div>
         <div class="navbar-text pull-right">
-            <a href="widget-chooser.view.client.html">
+            <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/new">
                 <span class="glyphicon glyphicon-plus navbar-glyphicon"></span>
             </a>
         </div>
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">Widgets</a>
+            <a class="navbar-brand">Widgets</a>
         </div>
     </div>
 </nav>
 
 <div class="container-fluid">
-    <div>
-        <div class="tn-toolbar">
-            <a href ="widget-heading.view.client.html">
-                <span class="glyphicon glyphicon-cog"></span>
-            </a>
-            <span class="glyphicon glyphicon-align-justify"></span>
+
+    <div ng-repeat="widget in model.widgets">
+        <div ng-switch="widget.widgetType">
+
+            <div ng-switch-when="HEADER">
+                <div class="tn-toolbar">
+                    <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">
+                        <span class="glyphicon glyphicon-cog"></span>
+                    </a>
+                    <span class="glyphicon glyphicon-align-justify"></span>
+                </div>
+                <h1 ng-if="widget.size == 1">{{widget.text}}</h1>
+                <h2 ng-if="widget.size == 2">{{widget.text}}</h2>
+                <h3 ng-if="widget.size == 3">{{widget.text}}</h3>
+                <h4 ng-if="widget.size == 4">{{widget.text}}</h4>
+                <h5 ng-if="widget.size == 5">{{widget.text}}</h5>
+                <h6 ng-if="widget.size == 6">{{widget.text}}</h6>
+            </div>
+            <div ng-switch-when="IMAGE">
+                <div class="tn-toolbar">
+                    <a>
+                        <span href="#"  class="glyphicon glyphicon-cog"></span>
+                    </a>
+                    <span class="glyphicon glyphicon-align-justify"></span>
+                </div>
+                <img ng-src="{{widget.url}}" width="{{widget.width}}"/>
+            </div>
+            <div ng-switch-when="YOUTUBE">
+                <div class="tn-toolbar">
+                    <a>
+                        <span href="#"  class="glyphicon glyphicon-cog"></span>
+                    </a>
+                    <span class="glyphicon glyphicon-align-justify"></span>
+                </div>
+                <iframe width="100%" ng-src="{{model.doYouTrustUrl(widget.url)}}" frameborder="0" allowfullscreen></iframe>
+            </div>
         </div>
-        <h1>GIZMODO</h1>
     </div>
-    <div class="tn-toolbar">
-        <a href="widget-heading.view.client.html">
-            <span class="glyphicon glyphicon-cog"></span>
-        </a>
-        <span class="glyphicon glyphicon-align-justify"></span>
-    </div>
-    <h3>New Measurements of the Universe Expanding Tell a Confusing Story</h3>
 </div>
-    <div>
-        <div class="tn-toolbar">
-            <a href="widget-image.view.client.html">
-                <span class="glyphicon glyphicon-cog"></span>
-            </a>
-            <span class="glyphicon glyphicon-align-justify"></span>
-        </div>
-
-        <img width="100%"
-             src="https://i.kinja-img.com/gawker-media/image/upload/s--UE7cu6DV--/c_scale,fl_progressive,q_80,w_800/xoo0evqxzxrrmrn4ayoq.jpg">
-    </div>
-    <div>
-        <div class="tn-toolbar">
-            <a href="widget-heading.view.client.html">
-                <span class="glyphicon glyphicon-cog"></span>
-            </a>
-            <span class="glyphicon glyphicon-align-justify"></span>
-        </div>
-
-        <p>At the Environmental Protection Agency, it’s typical for an incoming administration to implement a realignment of sorts—with some grants or contracts, for instance, being frozen temporarily—but a decision by President Donald Trump’s staff to <a href="http://www.latimes.com/politics/washington/la-na-trailguide-updates-trump-administration-orders-media-1485281190-htmlstory.html" target="_blank" rel="noopener">order a total media blackout</a>, as well as ban any new spending, has left some employees rattled. <br></p>
-    </div>
-    <div>
-        <div class="tn-toolbar">
-            <a href = "widget-youtube.view.client.html">
-                <span class="glyphicon glyphicon-cog"></span>
-            </a>
-            <span class="glyphicon glyphicon-align-justify"></span>
-        </div>
-        <iframe width="100%" src="https://www.youtube.com/embed/vQD1Txzvq70" frameborder="0" allowfullscreen></iframe>
-    </div>
 
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
@@ -75,7 +67,7 @@
             <span class="glyphicon glyphicon-eye-open navbar-glyphicon"></span>
         </div>
         <div class="navbar-text pull-right">
-            <a href="../../user/templates/profile.view.client.html">
+            <a href="#/user/{{model.userId}}">
                 <span class="glyphicon glyphicon-user navbar-glyphicon"></span></a>
         </div>
     </div>

@@ -55,12 +55,14 @@
                 controller:"PageEditController",
                 controllerAs:"model"
             })
-            // TODO: complete website routes
-            // TODO: create page routes
-            // Widget Routes
             .when("/user/:uid/website/:wid/page/:pid/widget", {
                 templateUrl: "widget/templates/widget-list.view.client.html",
                 controller: "WidgetListController",
+                controllerAs: "model"
+            })
+            .when("/user/:uid/website/:wid/page/:pid/widget/:wgid", {
+                templateUrl: "widget/templates/widget-edit.view.client.html",
+                controller: "WidgetEditController",
                 controllerAs: "model"
             })
 

@@ -1,12 +1,15 @@
 
     <div class="container-fluid">
         <h1>Register</h1>
-        <input ng-model = "user.firstname"
+        <div ng-show = "model.error" class = "alert alert-danger" role = "register">
+            {{model.error}}
+        </div>
+        <input ng-model = "user.firstName"
                id = "firstname"
                type="text"
                class="form-control"
                placeholder="firstname"/>
-        <input ng-model = "user.lastname"
+        <input ng-model = "user.lastName"
                id = "lastname"
                type="text"
                class="form-control"

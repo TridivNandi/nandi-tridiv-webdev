@@ -33,7 +33,7 @@
                 newUser._id = 1;
             }
             users.push(newUser);
-            console.log(newUser);
+            return newUser;
         }
 
         function findUserById(userId) {
