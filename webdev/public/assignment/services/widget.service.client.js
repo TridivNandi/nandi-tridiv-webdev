@@ -55,7 +55,7 @@
         }
 
         function updateWidget(widgetId, widget){
-            console.log("In update service");
+
             for(var w in widgets){
                 if(widgets[w]._id === widgetId){
                     widgets[w] = widget;
@@ -67,7 +67,7 @@
         }
 
         function deleteWidget(widgetId){
-            console.log("In delete service");
+
             for (var w in widgets){
                 if(widgets[w]._id==widgetId){
                     widgets.splice(w,1);
