@@ -34,7 +34,7 @@
 
 
         function deleteWidget(){
-            console.log("in delete widget");
+
             var isDeleted = WidgetService.deleteWidget(widgetId);
             if(isDeleted){
                 $location.url("/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget");
@@ -45,7 +45,7 @@
         }
 
         function updateWidget() {
-            console.log("in update widget");
+
             var isUpdated = WidgetService.updateWidget(widgetId,vm.presentWidget);
             if(isUpdated){
                 $location.url("/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget");
