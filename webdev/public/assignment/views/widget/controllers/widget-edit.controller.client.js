@@ -8,21 +8,25 @@
 
     function widgetEditController(WidgetService,$sce,$routeParams, $location){
 
+        var vm = this;
+
         var userId = $routeParams.uid;
         var websiteId = $routeParams.wid;
         var pageId = $routeParams.pid;
         var widgetId = $routeParams.wgid;
-        var widgets = WidgetService.findWidgetsByPageId(pageId);
-        var presentWidget = WidgetService.findWidgetById(widgetId);
-        var vm = this;
 
         vm.userId = userId;
         vm.websiteId = websiteId;
         vm.pageId = pageId;
-        vm.widgets= widgets;
-        vm.presentWidget = presentWidget;
         vm.widgetId = widgetId;
-        //console.log(presentWidget);
+
+        function init() {
+            var widgets = WidgetService.findWidgetsByPageId(pageId);
+            var presentWidget = WidgetService.findWidgetById(widgetId);
+            vm.widgets= widgets;
+            vm.presentWidget = presentWidget;
+        }
+        init();
 
         //event handlers
         vm.updateWidget = updateWidget;
@@ -42,7 +46,7 @@
 
         function updateWidget() {
             console.log("in update widget");
-            var isUpdated = WidgetService.updateWidget(widgetId,presentWidget);
+            var isUpdated = WidgetService.updateWidget(widgetId,vm.presentWidget);
             if(isUpdated){
                 $location.url("/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget");
             }

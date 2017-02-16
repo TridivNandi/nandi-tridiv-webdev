@@ -6,8 +6,6 @@
     function loginController($location, UserService) {
         var vm = this;
 
-        // event handlers
-
 
         function init() {
             vm.login = login;

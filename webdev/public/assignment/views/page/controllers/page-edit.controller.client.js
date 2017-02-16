@@ -8,25 +8,32 @@
 
     function pageEditController(PageService, $routeParams, $location){
 
+        var vm = this;
 
         var userId = $routeParams.uid;
         var websiteId = $routeParams.wid;
         var pageId = $routeParams.pid;
-        var pages = PageService.findPageByWebsiteId(websiteId);
-        var presentPage = PageService.findPageById(pageId);
-        var vm = this;
+
         vm.websiteId = websiteId;
         vm.userId = userId;
         vm.pageId = pageId;
-        vm.pages = pages;
-        vm.presentPage = presentPage;
+
+        function init() {
+            var pages = PageService.findPageByWebsiteId(websiteId);
+            var presentPage = PageService.findPageById(pageId);
+            vm.pages = pages;
+            vm.presentPage = presentPage;
+        }
+
+        init();
+
 
         //event handlers
         vm.updatePage = updatePage;
         vm.deletePage = deletePage;
 
         function updatePage(){
-            var isUpdated = PageService.updatePage(pageId,presentPage);
+            var isUpdated = PageService.updatePage(pageId,vm.presentPage);
             if(isUpdated){
                 $location.url("/user/"+userId+"/website/"+websiteId+"/page")
             }

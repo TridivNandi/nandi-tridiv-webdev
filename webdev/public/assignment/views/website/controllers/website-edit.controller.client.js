@@ -5,15 +5,23 @@
 
     function websiteEditController(WebsiteService,$routeParams,$location){
 
+        var vm = this;
+
         var userId = $routeParams.uid;
         var websiteId = $routeParams.wid;
-        var websites = WebsiteService.findWebsitesByUser(userId);
-        var presentWebsite = WebsiteService.findWebsiteById(websiteId);
-        var vm = this;
+
         vm.userId = userId;
         vm.websiteId = websiteId;
-        vm.websites = websites;
-        vm.presentWebsite = presentWebsite;
+
+        function init() {
+            var websites = WebsiteService.findWebsitesByUser(userId);
+            var presentWebsite = WebsiteService.findWebsiteById(websiteId);
+            vm.websites = websites;
+            vm.presentWebsite = presentWebsite;
+        }
+        init();
+
+
 
         //event handlers
         vm.updateWebsite = updateWebsite;
@@ -31,7 +39,7 @@
         }
 
         function updateWebsite() {
-            var isUpdated = WebsiteService.updateWebsite(websiteId,presentWebsite);
+            var isUpdated = WebsiteService.updateWebsite(websiteId,vm.presentWebsite);
             if(isUpdated){
                 $location.url("/user/"+userId+"/website");
             }

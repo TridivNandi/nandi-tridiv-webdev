@@ -5,17 +5,24 @@
 
     function widgetListController(WidgetService,$sce,$routeParams){
 
+        var vm = this;
+
+
         var userId = $routeParams.uid;
         var websiteId = $routeParams.wid;
         var pageId = $routeParams.pid;
-        var widgets = WidgetService.findWidgetsByPageId(pageId);
-       // var presentWidget = WidgetService.findWidgetById();
-        var vm = this;
 
         vm.userId = userId;
         vm.websiteId = websiteId;
         vm.pageId = pageId;
-        vm.widgets= widgets;
+
+        function init() {
+            var widgets = WidgetService.findWidgetsByPageId(pageId);
+            vm.widgets= widgets;
+
+        }
+        init();
+
 
         //event handlers
         vm.doYouTrustUrl = doYouTrustUrl;

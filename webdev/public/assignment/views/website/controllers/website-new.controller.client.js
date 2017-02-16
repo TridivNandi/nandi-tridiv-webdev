@@ -8,16 +8,21 @@
 
     function WebsiteNewController($routeParams, WebsiteService, $location) {
 
-
-
+        var vm = this;
 
         var userId = $routeParams.uid;
         var websiteId = $routeParams.wid;
-        var websites = WebsiteService.findAllWebsites(userId);
-        var vm = this;
-        vm.websites = websites;
+
         vm.userId = userId;
-        vm.website_present = WebsiteService.findWebsiteById(websiteId);
+        vm.websiteId = websiteId;
+
+        function init() {
+            var websites = WebsiteService.findAllWebsites(userId);
+            vm.website_present = WebsiteService.findWebsiteById(websiteId);
+            vm.websites = websites;
+        }
+        init();
+
 
         //event handler
         vm.addWebSite = addWebSite;

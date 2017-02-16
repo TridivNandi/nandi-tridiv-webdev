@@ -24,19 +24,17 @@
         };
         return api;
 
-        function createWidget(pageId, type){
-            var newWidget = {};
-            newWidget.pageId = pageId;
-            newWidget.widgetType = type;
+        function createWidget(pageId, widget){
+
+            widget.pageId = pageId;
             if(widgets){
-                newWidget._id = widgets[widgets.length - 1]._id+1;
+                widget._id = widgets[widgets.length - 1]._id+1;
             }
             else{
-                newWidget._id = 1;
+                widget._id = 1;
             }
-            widgets.push(newWidget);
-            console.log(newWidget);
-            return newWidget._id;
+            widgets.push(widget);
+            return widget._id;
         }
 
         function findWidgetsByPageId(pageId){
