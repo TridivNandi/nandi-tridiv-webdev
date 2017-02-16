@@ -38,8 +38,7 @@
             }
 
             websites.push(newWebsite);
-            //console.log(websites[6]);
-            //return websites;
+
         }
 
         function findWebsitesByUser(userId){
@@ -50,7 +49,6 @@
                 }
 
             }
-            //console.log(websiteList[0]);
             return websiteList;
 
 
@@ -91,7 +89,6 @@
 
         }
 
-        // extra code
         function findAllWebsites(userId) {
             var sites = [];
             for(var w in websites) {
