@@ -70,7 +70,7 @@
                 if( users[u]._id == userId ) {
                     users[u].firstName = newUser.firstName;
                     users[u].lastName = newUser.lastName;
-                    console.log(users[u]);
+
                     return users[u];
                 }
             }
