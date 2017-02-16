@@ -9,7 +9,7 @@
             <a class="navbar-brand " href="#">Widget Edit</a>
         </div>
         <div class="navbar-text pull-right">
-            <a  href="widget-list.view.client.html">
+            <a  ng-click="model.updateWidget()">
                 <span class="glyphicon glyphicon-ok navbar-glyphicon "></span>
             </a>
         </div>
@@ -20,16 +20,21 @@
 
     <div ng-switch="model.presentWidget.widgetType">
         <div ng-switch-when="HEADER">
-            <ng-include src="'widget/templates/widget-heading-edit.view.client.html'"/>
+            <ng-include src="'views/widget/templates/widget-heading-edit.view.client.html'"/>
         </div>
         <div ng-switch-when="IMAGE">
-            <ng-include src="widget-image-edit.view.client.html"/>
+            <ng-include src="'views/widget/templates/widget-image-edit.view.client.html'"/>
         </div>
         <div ng-switch-when="YOUTUBE">
-            <ng-include src="widget-youtube-edit.view.client.html"/>
+            <ng-include src="'views/widget/templates/widget-youtube-edit.view.client.html'"/>
         </div>
 
     </div>
+
+        <a class="btn btn-danger  btn-block"
+           ng-click="model.deleteWidget()">Delete</a>
+
+
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">

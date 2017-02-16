@@ -20,21 +20,23 @@
             "findWidgetsByPageId": findWidgetsByPageId,
             "findWidgetById": findWidgetById,
             "updateWidget": updateWidget,
-            "deleteWidget": deleteWidget,
-            "findAllWidgets": findAllWidgets
+            "deleteWidget": deleteWidget
         };
         return api;
 
-        function createWidget(pageId, widget){
-            var newWidget = angular.copy(widget);
+        function createWidget(pageId, type){
+            var newWidget = {};
             newWidget.pageId = pageId;
+            newWidget.widgetType = type;
             if(widgets){
-                newWidget._id = pages[page.length - 1]._id+1;
+                newWidget._id = widgets[widgets.length - 1]._id+1;
             }
             else{
                 newWidget._id = 1;
             }
             widgets.push(newWidget);
+            console.log(newWidget);
+            return newWidget._id;
         }
 
         function findWidgetsByPageId(pageId){
@@ -57,10 +59,19 @@
         }
 
         function updateWidget(widgetId, widget){
+            console.log("In update service");
+            for(var w in widgets){
+                if(widgets[w]._id === widgetId){
+                    widgets[w] = widget;
+                    return true;
+                }
+            }
+            return false;
 
         }
 
         function deleteWidget(widgetId){
+            console.log("In delete service");
             for (var w in widgets){
                 if(widgets[w]._id==widgetId){
                     widgets.splice(w,1);
@@ -70,8 +81,6 @@
             return false;
         }
 
-        function findAllWidgets(pageId) {
-            return widgets;
-        }
+
     }
 })();

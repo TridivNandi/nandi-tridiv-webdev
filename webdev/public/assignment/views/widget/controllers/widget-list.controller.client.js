@@ -8,7 +8,7 @@
         var userId = $routeParams.uid;
         var websiteId = $routeParams.wid;
         var pageId = $routeParams.pid;
-        var widgets = WidgetService.findAllWidgets(pageId);
+        var widgets = WidgetService.findWidgetsByPageId(pageId);
        // var presentWidget = WidgetService.findWidgetById();
         var vm = this;
 

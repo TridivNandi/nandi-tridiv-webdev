@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-text pull-left">
-            <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget">
+            <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page">
                 <span class="glyphicon glyphicon-chevron-left navbar-glyphicon"></span>
             </a>
         </div>
@@ -20,14 +20,13 @@
 
     <div ng-repeat="widget in model.widgets">
         <div ng-switch="widget.widgetType">
-
+            <div class="tn-toolbar">
+                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">
+                    <span class="glyphicon glyphicon-cog"></span>
+                </a>
+                <span class="glyphicon glyphicon-align-justify"></span>
+            </div>
             <div ng-switch-when="HEADER">
-                <div class="tn-toolbar">
-                    <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">
-                        <span class="glyphicon glyphicon-cog"></span>
-                    </a>
-                    <span class="glyphicon glyphicon-align-justify"></span>
-                </div>
                 <h1 ng-if="widget.size == 1">{{widget.text}}</h1>
                 <h2 ng-if="widget.size == 2">{{widget.text}}</h2>
                 <h3 ng-if="widget.size == 3">{{widget.text}}</h3>
@@ -36,21 +35,9 @@
                 <h6 ng-if="widget.size == 6">{{widget.text}}</h6>
             </div>
             <div ng-switch-when="IMAGE">
-                <div class="tn-toolbar">
-                    <a>
-                        <span href="#"  class="glyphicon glyphicon-cog"></span>
-                    </a>
-                    <span class="glyphicon glyphicon-align-justify"></span>
-                </div>
                 <img ng-src="{{widget.url}}" width="{{widget.width}}"/>
             </div>
             <div ng-switch-when="YOUTUBE">
-                <div class="tn-toolbar">
-                    <a>
-                        <span href="#"  class="glyphicon glyphicon-cog"></span>
-                    </a>
-                    <span class="glyphicon glyphicon-align-justify"></span>
-                </div>
                 <iframe width="100%" ng-src="{{model.doYouTrustUrl(widget.url)}}" frameborder="0" allowfullscreen></iframe>
             </div>
         </div>

@@ -7,9 +7,10 @@
         var vm = this;
 
         // event handlers
-        vm.login = login;
+
 
         function init() {
+            vm.login = login;
         }
         init();
 
