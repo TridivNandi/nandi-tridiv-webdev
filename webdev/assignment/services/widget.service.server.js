@@ -72,7 +72,7 @@ module.exports = function(app){
         var widgetList = [];
         for(var w in widgets){
             if(widgets[w].pageId ==pageId){
-                widgetList.push(widget[w]);
+                widgetList.push(widgets[w]);
             }
         }
         res.json(widgetList);

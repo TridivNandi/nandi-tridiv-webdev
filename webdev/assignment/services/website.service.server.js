@@ -58,15 +58,15 @@ module.exports = function(app){
     }
 
     function updateWebsite(req, res){
-
+        console.log("Inside update website server");
         var wId = req.params.websiteId;
         var website = req.body;
         for(var w in websites){
             if(websites[w]._id == wId){
                 websites[w].name = website.name;
                 websites[w].description = website.description;
-                res.json(website[w]);
-                break;
+                res.json(websites[w]);
+                return;
             }
         }
     }
@@ -79,6 +79,7 @@ module.exports = function(app){
             if( websites[w]._id == wId ) {
                 websites.splice(w, 1);
                 res.json(w);
+                return;
             }
         }
     }

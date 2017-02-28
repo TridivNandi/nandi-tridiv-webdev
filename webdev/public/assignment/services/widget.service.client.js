@@ -16,7 +16,7 @@
 
         function createWidget(pageId, widget){
 
-            return http.post("/api/page/"+ pageId + "/widget", widget);
+            return $http.post("/api/page/"+ pageId + "/widget", widget);
             /*widget.pageId = pageId;
             if(widgets){
                 widget._id = widgets[widgets.length - 1]._id+1;
@@ -30,7 +30,7 @@
 
         function findWidgetsByPageId(pageId){
 
-            return http.get("/api/page/"+pageId+ "/widget");
+            return $http.get("/api/page/"+pageId+ "/widget");
             /*var widgetList= []
             for (var w in widgets){
                 if(widgets[w].pageId == pageId){
@@ -42,7 +42,7 @@
 
         function findWidgetById(widgetId){
 
-            return http.get("/api/widget/"+widgetId);
+            return $http.get("/api/widget/"+widgetId);
             /*for(var w in widgets){
                 if(widgets[w]._id == widgetId){
                     return angular.copy(widgets[w]);
@@ -53,7 +53,7 @@
 
         function updateWidget(widgetId, widget){
 
-            return http.put("/api/widget/"+widgetId, widget);
+            return $http.put("/api/widget/"+widgetId, widget);
             /*for(var w in widgets){
                 if(widgets[w]._id === widgetId){
                     widgets[w] = widget;
@@ -66,7 +66,7 @@
 
         function deleteWidget(widgetId){
 
-            return http.delete("/api/widget/" + widgetId);
+            return $http.delete("/api/widget/" + widgetId);
            /* for (var w in widgets){
                 if(widgets[w]._id==widgetId){
                     widgets.splice(w,1);

@@ -42,7 +42,7 @@
                 .createWidget(pageId,newWidget)
                 .success(function(widget){
                     if(widget){
-                        $location.url("/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget/"+wid);
+                        $location.url("/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget/"+widget._id);
                     }
                     else{
                         vm.error = "Widget not created."

@@ -62,7 +62,7 @@
         }
 
         function updateWebsite(websiteId, website){
-
+            console.log("Inside update website client");
             return $http.put("/api/website/"+websiteId,website);
             /*for(var w in websites){
                 if(websites[w]._id === websiteId){

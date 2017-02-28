@@ -48,12 +48,11 @@
         }
 
         function updateWebsite() {
-            console.log("Inside updateWebsite");
+            console.log("Inside updateWebsite controller");
             WebsiteService
                 .updateWebsite(websiteId,vm.presentWebsite)
                 .success(function(isUpdated){
-                    //console.log("website edit controller");
-                    //console.log(isUpdated != null);
+                    console.log(isUpdated);
                     if(isUpdated){
                         $location.url("/user/"+userId+"/website");
                     }
