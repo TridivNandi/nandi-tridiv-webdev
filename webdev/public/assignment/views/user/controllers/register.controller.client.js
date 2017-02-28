@@ -11,7 +11,21 @@
 
         function addUser(user){
             if(user){
-                var existingUser = UserService.findUserByUserName(user.username);
+                if(user.password == user.password2){
+                    var promise = UserService.createUser(user);
+                    promise.success(function (registerUser){
+                        console.log(registerUser);
+                        if(registerUser != null){
+                            $location.url('/user/' + registerUser._id);
+                        } else {
+                            vm.error = 'unable to redirect to user profile';
+                        }
+                    });
+                }
+                else{
+                    vm.error = "Password do not match!";
+                }
+                /*var existingUser = UserService.findUserByUserName(user.username);
                 if(!existingUser){
                     if(user.password === user.password2){
                         var newUser = UserService.createUser(user);
@@ -23,7 +37,7 @@
                 }
                 else{
                     vm.error = "Username already exists.";
-                }
+                }*/
             }
             else{
                 vm.error = "Oops! Something went wrong."

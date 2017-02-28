@@ -14,10 +14,16 @@
         vm.websiteId = websiteId;
 
         function init() {
-            var websites = WebsiteService.findWebsitesByUser(userId);
-            var presentWebsite = WebsiteService.findWebsiteById(websiteId);
-            vm.websites = websites;
-            vm.presentWebsite = presentWebsite;
+            WebsiteService
+                .findWebsitesByUser(userId)
+                .success(function(websites){
+                    vm.websites = websites;
+                });
+            WebsiteService
+                .findWebsiteById(websiteId)
+                .success(function(presentWebsite){
+                    vm.presentWebsite = presentWebsite;
+                });
         }
         init();
 
@@ -29,23 +35,33 @@
 
 
         function deleteWebsite(){
-            var isDeleted = WebsiteService.deleteWebsite(websiteId);
-            if(isDeleted){
-                $location.url("/user/"+userId+"/website");
-            }
-            else{
-                vm.error = "Cannot delete website.";
-            }
+            WebsiteService
+                .deleteWebsite(websiteId)
+                .success(function(isDeleted){
+                    if(isDeleted){
+                        $location.url("/user/"+userId+"/website");
+                    }
+                    else{
+                        vm.error = "Cannot delete website.";
+                    }
+                });
         }
 
         function updateWebsite() {
-            var isUpdated = WebsiteService.updateWebsite(websiteId,vm.presentWebsite);
-            if(isUpdated){
-                $location.url("/user/"+userId+"/website");
-            }
-            else{
-                vm.error = "Cannot edit website.";
-            }
+            console.log("Inside updateWebsite");
+            WebsiteService
+                .updateWebsite(websiteId,vm.presentWebsite)
+                .success(function(isUpdated){
+                    //console.log("website edit controller");
+                    //console.log(isUpdated != null);
+                    if(isUpdated){
+                        $location.url("/user/"+userId+"/website");
+                    }
+                    else{
+                        vm.error = "Cannot edit website.";
+                    }
+                });
+
         }
 
 

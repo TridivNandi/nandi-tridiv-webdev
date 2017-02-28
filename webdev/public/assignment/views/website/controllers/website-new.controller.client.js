@@ -17,9 +17,11 @@
         vm.websiteId = websiteId;
 
         function init() {
-            var websites = WebsiteService.findAllWebsites(userId);
-            vm.website_present = WebsiteService.findWebsiteById(websiteId);
-            vm.websites = websites;
+            var promise = WebsiteService.findWebsitesByUser(userId);
+            promise.success(function (websites){
+                vm.websites = websites;
+            });
+
         }
         init();
 
@@ -29,8 +31,11 @@
 
         function addWebSite(website){
             if(website){
-                WebsiteService.createWebsite(userId, website);
-                $location.url("/user/"+userId+"/website/");
+                WebsiteService
+                    .createWebsite(userId, website)
+                    .success(function(){
+                        $location.url("/user/"+userId+"/website/");
+                    });
             }
             else{
                 vm.error = "Cannot create new website."
