@@ -19,10 +19,16 @@
         vm.pageId = pageId;
 
         function init() {
-            var pages = PageService.findPageByWebsiteId(websiteId);
-            var presentPage = PageService.findPageById(pageId);
-            vm.pages = pages;
-            vm.presentPage = presentPage;
+            PageService
+                .findPageByWebsiteId(websiteId)
+                .success(function(pages){
+                    vm.pages = pages;
+                });
+            PageService
+                .findPageById(pageId)
+                .success(function(presentPage){
+                    vm.presentPage = presentPage;
+                });
         }
 
         init();
@@ -33,26 +39,30 @@
         vm.deletePage = deletePage;
 
         function updatePage(){
-            var isUpdated = PageService.updatePage(pageId,vm.presentPage);
-            if(isUpdated){
-                $location.url("/user/"+userId+"/website/"+websiteId+"/page")
-            }
-            else{
-                vm.error = "Cannot edit page."
-            }
+            PageService
+                .updatePage(pageId,vm.presentPage)
+                .success(function(isUpdated){
+                    if(isUpdated){
+                        $location.url("/user/"+userId+"/website/"+websiteId+"/page")
+                    }
+                    else{
+                        vm.error = "Cannot edit page."
+                    }
+                });
+
         }
 
         function deletePage(){
-            var isDeleted = PageService.deletePage(pageId);
-            if(isDeleted){
-                $location.url("/user/"+userId+"/website/"+websiteId+"/page");
-            }
-            else{
-                vm.error = "Cannot delete page.";
-            }
+            PageService
+                .deletePage(pageId)
+                .success(function(isDeleted){
+                    if(isDeleted){
+                        $location.url("/user/"+userId+"/website/"+websiteId+"/page");
+                    }
+                    else{
+                        vm.error = "Cannot delete page.";
+                    }
+                });
         }
-
-
-
     }
 })();

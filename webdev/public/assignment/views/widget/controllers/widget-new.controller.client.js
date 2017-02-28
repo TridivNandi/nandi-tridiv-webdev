@@ -21,8 +21,12 @@
         vm.widgetId = widgetId;
 
         function init() {
-            var widgets = WidgetService.findWidgetsByPageId(pageId);
-            vm.widgets= widgets;
+            WidgetService
+                .findWidgetsByPageId(pageId)
+                .success(function(widgets){
+                    vm.widgets= widgets;
+                });
+
         }
         init();
 
@@ -34,10 +38,16 @@
         function createWidget(type) {
             var newWidget = {};
             newWidget.widgetType = type;
-            var wid = WidgetService.createWidget(pageId,newWidget);
-            $location.url("/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget/"+wid);
-
-
+            WidgetService
+                .createWidget(pageId,newWidget)
+                .success(function(widget){
+                    if(widget){
+                        $location.url("/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget/"+wid);
+                    }
+                    else{
+                        vm.error = "Widget not created."
+                    }
+                });
         }
 
     }

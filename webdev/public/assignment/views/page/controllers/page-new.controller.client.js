@@ -1,12 +1,12 @@
 /**
  * Created by Tridiv on 15-02-2017.
  */
-(function(){
+(function () {
     angular
         .module("WebAppMaker")
-        .controller("PageNewController",pageNewController);
+        .controller("PageNewController", pageNewController);
 
-    function pageNewController(PageService, $routeParams, $location){
+    function pageNewController(PageService, $routeParams, $location) {
 
         var vm = this;
 
@@ -17,9 +17,11 @@
         vm.userId = userId;
 
         function init() {
-            var pages = PageService.findPageByWebsiteId(websiteId);
-            vm.pages = pages;
-
+            PageService
+                .findPageByWebsiteId(websiteId)
+                .success(function (pages) {
+                    vm.pages = pages;
+                });
         }
 
         init();
@@ -27,14 +29,18 @@
         //event handlers
         vm.createPage = createPage;
 
-        function createPage(page){
-            if(page){
-                PageService.createPage(websiteId,page);
-                $location.url("/user/"+userId+"/website/"+websiteId+"/page");
-            }
-            else{
-                vm.error = "Cannot create new page."
-            }
+        function createPage(page) {
+
+            PageService
+                .createPage(websiteId, page)
+                .success(function (page) {
+                    if (page) {
+                        $location.url("/user/" + userId + "/website/" + websiteId + "/page");
+                    }
+                    else {
+                        vm.error = "Cannot create new page."
+                    }
+                });
         }
 
 

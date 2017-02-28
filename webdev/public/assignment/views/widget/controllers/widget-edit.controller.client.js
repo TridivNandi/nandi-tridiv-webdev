@@ -21,10 +21,18 @@
         vm.widgetId = widgetId;
 
         function init() {
-            var widgets = WidgetService.findWidgetsByPageId(pageId);
-            var presentWidget = WidgetService.findWidgetById(widgetId);
-            vm.widgets= widgets;
-            vm.presentWidget = presentWidget;
+            WidgetService
+                .findWidgetsByPageId(pageId)
+                .success(function(widgets){
+                    vm.widgets= widgets;
+                })
+            WidgetService
+                .findWidgetById(widgetId)
+                .success(function(presentWidget){
+                    vm.presentWidget = presentWidget;
+                });
+
+
         }
         init();
 
@@ -35,24 +43,32 @@
 
         function deleteWidget(){
 
-            var isDeleted = WidgetService.deleteWidget(widgetId);
-            if(isDeleted){
-                $location.url("/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget");
-            }
-            else{
-                vm.error = "Cannot delete widget.";
-            }
+            WidgetService
+                .deleteWidget(widgetId)
+                .success(function(isDeleted){
+                    if(isDeleted){
+                        $location.url("/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget");
+                    }
+                    else{
+                        vm.error = "Cannot delete widget.";
+                    }
+                });
+
         }
 
         function updateWidget() {
 
-            var isUpdated = WidgetService.updateWidget(widgetId,vm.presentWidget);
-            if(isUpdated){
-                $location.url("/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget");
-            }
-            else{
-                vm.error = "Cannot edit widget.";
-            }
+            WidgetService
+                .updateWidget(widgetId,vm.presentWidget)
+                .success(function(isUpdated){
+                    if(isUpdated){
+                        $location.url("/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget");
+                    }
+                    else{
+                        vm.error = "Cannot edit widget.";
+                    }
+                });
+
         }
 
     }

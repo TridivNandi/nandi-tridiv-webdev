@@ -79,10 +79,8 @@ module.exports = function(app){
             if( websites[w]._id == wId ) {
                 websites.splice(w, 1);
                 res.json(w);
-                return true;
             }
         }
-        return false;
     }
 
 }
