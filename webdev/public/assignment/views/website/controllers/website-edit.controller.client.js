@@ -48,7 +48,7 @@
         }
 
         function updateWebsite() {
-            console.log("Inside updateWebsite controller");
+
             WebsiteService
                 .updateWebsite(websiteId,vm.presentWebsite)
                 .success(function(isUpdated){

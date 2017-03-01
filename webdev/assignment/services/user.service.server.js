@@ -39,11 +39,9 @@ module.exports = function(app) {
     function findUserByCredentials(req, res){
         var username = req.query.username;
         var password = req.query.password;
-       // console.log("find user by credentials HTTP service");
         var user = users.find(function(user){
             return user.password == password && user.username == username;
         });
-        //console.log(user);
         res.json(user);
 
 

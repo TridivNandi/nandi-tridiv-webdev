@@ -17,7 +17,6 @@
         vm.userId = userId;
 
         function init() {
-            console.log("Inside controller");
             PageService
                 .findPageByWebsiteId(websiteId)
                 .success(function(pages){

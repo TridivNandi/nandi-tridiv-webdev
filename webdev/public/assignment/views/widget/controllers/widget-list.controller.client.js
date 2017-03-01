@@ -30,6 +30,7 @@
 
         //event handlers
         vm.doYouTrustUrl = doYouTrustUrl;
+        vm.updatePosition = updatePosition;
 
         function doYouTrustUrl(url) {
             var baseUrl = "https://www.youtube.com/embed/";
@@ -37,6 +38,13 @@
             var id = urlParts[urlParts.length - 1];
             baseUrl += id;
             return $sce.trustAsResourceUrl(baseUrl);
+        }
+
+        function updatePosition(initial,final){
+            WidgetService
+                .updatePosition(initial,final,pageId)
+                .success(function (widgets) {
+                });
         }
     }
 })();
