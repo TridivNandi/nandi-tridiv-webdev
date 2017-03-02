@@ -58,7 +58,6 @@ module.exports = function(app){
     }
 
     function updateWebsite(req, res){
-        console.log("Inside update website server");
         var wId = req.params.websiteId;
         var website = req.body;
         for(var w in websites){

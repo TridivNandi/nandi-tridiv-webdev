@@ -18,6 +18,40 @@ module.exports = function(app){
             "url": "https://youtu.be/AM2Ivdi9c4E" }
     ];
 
+    var multer = require('multer');
+    var storage = multer.diskStorage({
+        destination: function (req, file, cb) {
+            cb(null, __dirname + "/../../public/uploads")
+        },
+        filename: function (req, file, cb) {
+            var extArray = file.mimetype.split("/");
+            var extension = extArray[extArray.length - 1];
+            cb(null, 'widget_image_' + Date.now() + '.' + extension)
+        }
+    });
+    var upload = multer({storage: storage});
+    app.post("/api/upload", upload.single('myFile'), uploadImage);
+
+    function uploadImage(req, res) {
+        var pageId = null;
+        var widgetId = req.body.widgetId;
+        var width = req.body.width;
+        var userId = req.body.userId;
+        var websiteId = req.body.websiteId;
+        var myFile = req.file;
+        var destination = myFile.destination;
+
+        for (var i in widgets) {
+            if (widgets[i]._id === widgetId) {
+                widgets[i].width = width;
+                widgets[i].url = req.protocol + '://' + req.get('host') + "/uploads/" + myFile.filename;
+                pageId = widgets[i].pageId;
+            }
+        }
+
+        res.redirect("/assignment/#/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget/" + widgetId);
+    }
+
 
     function sortable(req,res){
         var initial = req.query.initial;

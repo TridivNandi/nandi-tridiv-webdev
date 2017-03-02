@@ -20,7 +20,6 @@ module.exports = function(app) {
         var user = users.find(function (u) {
             return u._id == userId;
         });
-        console.log(user);
         res.json(user);
 
     }
