@@ -52,7 +52,6 @@
             WebsiteService
                 .updateWebsite(websiteId,vm.presentWebsite)
                 .success(function(isUpdated){
-                    console.log(isUpdated);
                     if(isUpdated){
                         $location.url("/user/"+userId+"/website");
                     }
