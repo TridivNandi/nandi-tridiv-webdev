@@ -16,37 +16,30 @@
     </div>
 </nav>
 
-<div class="container-fluid">
+<div class="container-fluid marginTop">
+    <div ng-show="model.error" class="alert alert-danger" role="alert">
+        {{model.error}}
+    </div>
+    <div class="container">
+        <div class="input-group">
+            <input ng-model="searchText" type="text" class="form-control" placeholder="Search Images" ng-keyup="$event.keyCode == 13 && model.searchPhotos(searchText)" >
+            <span class="input-group-btn">
+            <a ng-click="model.searchPhotos(searchText)" class="btn btn-default" type="button">
+                <span class="glyphicon glyphicon-search"></span>
+            </a>
+        </span>
+        </div>
+    </div>
+    <div class="row borderMargin">
+        <div class="container-fluid">
+            <div class="col-xs-4" ng-repeat="photo in model.photos.photo">
 
-    <div class="widget-list" wbdv-sortable="">
-    <div ng-repeat="widget in model.widgets">
-        <div ng-switch="widget.type">
-            <div class="tn-toolbar">
-                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">
-                    <span class="glyphicon glyphicon-cog"></span>
-                </a>
-                <span class="glyphicon glyphicon-align-justify"></span>
-            </div>
-            <div ng-switch-when="HEADER">
-                <ng-include src="'views/widget/templates/widget-heading.view.client.html'"/>
-            </div>
-            <div ng-switch-when="IMAGE">
-                <ng-include src="'views/widget/templates/widget-image.view.client.html'"/>
-            </div>
-            <div ng-switch-when="YOUTUBE" class = "youtube-widget">
-                <ng-include src="'views/widget/templates/widget-youtube.view.client.html'"/>
-            </div>
-            <div ng-switch-when="HTML">
-                <ng-include src="'views/widget/templates/widget-html.view.client.html'"/>
-            </div>
-            <div ng-switch-when="INPUT">
-                <ng-include src="'views/widget/templates/widget-text.view.client.html'"/>
+                <img ng-click="model.selectPhoto(photo)" class="img-thumbnail"
+                     ng-src="https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}_c.jpg"/>
             </div>
         </div>
     </div>
-    </div>
 </div>
-
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
@@ -62,4 +55,3 @@
         </div>
     </div>
 </nav>
-

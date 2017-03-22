@@ -30,7 +30,13 @@
 
         //event handlers
         vm.doYouTrustUrl = doYouTrustUrl;
+        vm.checkSafeHtml = checkSafeHtml;
         vm.updatePosition = updatePosition;
+
+        function checkSafeHtml(text) {
+            //console.log("Inside checkSafeHtml");
+            return $sce.trustAsHtml(text);
+        }
 
         function doYouTrustUrl(url) {
             var baseUrl = "https://www.youtube.com/embed/";

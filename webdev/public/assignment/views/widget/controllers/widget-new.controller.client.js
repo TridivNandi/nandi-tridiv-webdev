@@ -6,7 +6,7 @@
         .module("WebAppMaker")
         .controller("WidgetNewController",widgetNewController);
 
-    function widgetNewController(WidgetService,$sce,$routeParams, $location){
+    function widgetNewController(WidgetService,$sce, $routeParams, $location){
 
         var vm = this;
 
@@ -37,11 +37,14 @@
 
         function createWidget(type) {
             var newWidget = {};
-            newWidget.widgetType = type;
+            console.log("Client controller");
+            newWidget.type = type;
             WidgetService
                 .createWidget(pageId,newWidget)
                 .success(function(widget){
                     if(widget){
+                        console.log("Inside success of widget client controller");
+                        console.log(widget);
                         $location.url("/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget/"+widget._id);
                     }
                     else{

@@ -18,7 +18,7 @@
 
 <div class="container-fluid">
 
-    <div ng-switch="model.presentWidget.widgetType">
+    <div ng-switch="model.presentWidget.type">
         <div ng-switch-when="HEADER">
             <ng-include src="'views/widget/templates/widget-heading-edit.view.client.html'"/>
         </div>
@@ -27,6 +27,12 @@
         </div>
         <div ng-switch-when="YOUTUBE">
             <ng-include src="'views/widget/templates/widget-youtube-edit.view.client.html'"/>
+        </div>
+        <div ng-switch-when="HTML">
+            <ng-include src="'views/widget/templates/widget-html-edit.view.client.html'"/>
+        </div>
+        <div ng-switch-when="INPUT">
+            <ng-include src="'views/widget/templates/widget-text-edit.view.client.html'"/>
         </div>
 
     </div>
