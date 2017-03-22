@@ -23,6 +23,47 @@ module.exports = function(app, widgetModel){
     var upload = multer({storage: storage});
     app.post("/api/upload", upload.single('myFile'), uploadImage);
 
+
+    function uploadImage(req, res) {
+
+        if (req.file) {
+
+            var myFile = req.file;
+            var width = req.body.width;
+            var websiteId = req.body.websiteId;
+            var widgetId = req.body.widgetId;
+            var userId = req.body.userId;
+
+
+            widgetModel
+                .findWidgetById(widgetId)
+                .then(
+                    function (widget) {
+
+                        widget.width = width;
+                        widget.url =  req.protocol + '://' + req.get('host') + "/uploads/" + myFile.filename;
+                        var pageId = widget._page;
+
+                        widgetModel
+                            .updateWidget(widget._id, widget)
+                            .then(
+                                function (updatedWidget) {
+                                    res.redirect("/assignment/#/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget/" + widgetId);
+                                },
+                                function (updateFailure) {
+                                    res.sendStatus(400).send(updateFailure);
+                                }
+                            );
+                    },
+                    function (error) {
+                        res.sendStatus(400).send(error);
+                    }
+                );
+
+
+        }
+    }
+    /*
     function uploadImage(req, res) {
         var pageId = null;
         var widgetId = req.body.widgetId;
@@ -42,6 +83,7 @@ module.exports = function(app, widgetModel){
 
         res.redirect("/assignment/#/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget/" + widgetId);
     }
+    */
 
     /*
     function sortable(req,res){
@@ -65,8 +107,8 @@ module.exports = function(app, widgetModel){
 
     function reorderWidget(req, res) {
         var pageId = req.params.pageId;
-        var start = parseInt(req.query.start);
-        var end = parseInt(req.query.end);
+        var start = parseInt(req.query.initial);
+        var end = parseInt(req.query.final);
         widgetModel
             .reorderWidget(pageId, start, end)
             .then(function (widget) {
