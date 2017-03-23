@@ -17,7 +17,6 @@
 
         function createWidget(pageId, widget){
 
-            console.log("Client Service");
             return $http.post("/api/page/"+ pageId + "/widget", widget);
         }
 

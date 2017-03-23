@@ -37,14 +37,11 @@
 
         function createWidget(type) {
             var newWidget = {};
-            console.log("Client controller");
             newWidget.type = type;
             WidgetService
                 .createWidget(pageId,newWidget)
                 .success(function(widget){
                     if(widget){
-                        console.log("Inside success of widget client controller");
-                        console.log(widget);
                         $location.url("/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget/"+widget._id);
                     }
                     else{

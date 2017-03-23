@@ -11,7 +11,6 @@ module.exports = function (app, pageModel) {
 
     function findAllPagesForWebsite(req, res){
 
-        //var pageList= [];
         var websiteId= req.params.websiteId;
         pageModel
             .findAllPagesForWebsite(websiteId)

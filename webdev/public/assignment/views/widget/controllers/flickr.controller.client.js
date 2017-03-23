@@ -31,7 +31,7 @@
 
         vm.searchPhotos = function (searchTerm) {
 
-            console.log("Inside search photos");
+
 
             FlickrService
                 .searchPhotos(searchTerm)

@@ -21,7 +21,7 @@
         vm.widgetId = widgetId;
 
         function init() {
-            //console.log("Inside edit controller");
+
             WidgetService
                 .findWidgetsByPageId(pageId)
                 .success(function(widgets){
