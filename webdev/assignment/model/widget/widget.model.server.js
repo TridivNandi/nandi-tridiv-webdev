@@ -20,7 +20,6 @@ var pageModel = require('../page/page.model.server');
 
 function createWidget(pageId, widget) {
 
-    console.log("Model");
     var deffered = q.defer();
     widget._page = pageId;
     widgetModel.findOne({_page: pageId})
@@ -30,7 +29,6 @@ function createWidget(pageId, widget) {
                 widget.position = lastWidget.position+1;
             else
                 widget.position = 0;
-            console.log(widget);
             widgetModel.create(widget, function (err, widget) {
                 if(err){
                     deffered.reject(err);
@@ -38,7 +36,6 @@ function createWidget(pageId, widget) {
                     console.log(err);
                 }
                 else {
-                    console.log("else");
                     pageModel.findPageById(widget._page)
                         .then(function (page) {
                             page.widgets.push(widget._id);

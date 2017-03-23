@@ -63,47 +63,7 @@ module.exports = function(app, widgetModel){
 
         }
     }
-    /*
-    function uploadImage(req, res) {
-        var pageId = null;
-        var widgetId = req.body.widgetId;
-        var width = req.body.width;
-        var userId = req.body.userId;
-        var websiteId = req.body.websiteId;
-        var myFile = req.file;
-        var destination = myFile.destination;
 
-        for (var i in widgets) {
-            if (widgets[i]._id === widgetId) {
-                widgets[i].width = width;
-                widgets[i].url = req.protocol + '://' + req.get('host') + "/uploads/" + myFile.filename;
-                pageId = widgets[i].pageId;
-            }
-        }
-
-        res.redirect("/assignment/#/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget/" + widgetId);
-    }
-    */
-
-    /*
-    function sortable(req,res){
-        var initial = req.query.initial;
-        var final = req.query.final;
-        var pageId = req.params.pageId;
-        var widgetsList = [];
-        widgets = widgets.filter(function(x) {
-            if(pageId === x.pageId) {
-                widgetsList.push(x);
-            }
-            return widgets.indexOf(x) < 0
-        });
-        var widget  = widgetsList[initial];
-        widgetsList.splice(initial, 1);
-        widgetsList.splice(final,0, widget);
-        widgets.push.apply(widgets, widgetsList);
-        res.json(widgets);
-    }
-    */
 
     function reorderWidget(req, res) {
         var pageId = req.params.pageId;
