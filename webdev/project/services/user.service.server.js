@@ -28,18 +28,10 @@ module.exports = function (app, models, security) {
         }));
     app.get('/auth/facebook/callback',
         passport.authenticate('facebook', {
-            successRedirect: '/project/#/user',
+            successRedirect: '/project/#/profile/null/edit-profile',
             failureRedirect: '/project/#/login'
         }));
-    //app.get('/mr/auth/facebook', passport.authenticate('mrFacebook', {scope: 'email'}));
 
-    /*
-    app.get('/mr/auth/facebook/callback',
-        passport.authenticate('mrFacebook', {
-            successRedirect: '/project/#/user',
-            failureRedirect: '/project/#/login'
-        }));
-    */
 
     // CRUD requests
     app.get('/rmm/user/:uid', findUserById);
