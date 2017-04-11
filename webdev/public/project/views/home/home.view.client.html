@@ -1,0 +1,18 @@
+<div>
+    <h1 class="pitch"> One Stop Destination for all movie lovers  </h1>
+    <div class="input-group">
+        <input type="text" class="form-control search-box"
+               id="mySearchBox"
+               ng-model="homeControllerModel.movie.title"
+               ng-keypress="homeControllerModel.eventHandler($event, homeControllerModel.movie.title)"
+               placeholder="Enter any movie title to search, e.g: Logan">
+        <a ui-sref="home.result({movieTitle: homeControllerModel.movie.title})"
+           class="input-group-addon search-box btn-search">
+            <i class="glyphicon glyphicon-search"></i>
+        </a>
+    </div>
+    <br>
+
+    <div ui-view></div>
+
+</div>
