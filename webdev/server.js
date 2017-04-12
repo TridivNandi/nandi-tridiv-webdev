@@ -5,15 +5,9 @@ var passport = require('passport');
 var cookieParser = require('cookie-parser');
 
 var mongoose = require('mongoose');
-//mongoose.Promise = require('bluebird');
 
 var app = express();
 var secret = process.env.SESSION_SECRET || "Local Deployment";
-// if (process.env.WEB_CONCURRENCY) {
-//     secret = process.env.SESSION_SECRET;
-// }
-
-
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
@@ -35,7 +29,6 @@ var database = require('./database/database')(mongoose);
 var security = require('./security/security')(database, passport);
 
 
-//require ("./test/app.js")(app);
 require("./assignment/app.js")(app);
 require("./project/app")(app, database, security);
 

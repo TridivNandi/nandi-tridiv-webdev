@@ -2,12 +2,12 @@
  * Created by Tridiv on 04-04-2017.
  */
 module.exports = function (mongoose) {
-    console.log("In database.js");
-    var connectionString = 'mongodb://127.0.0.1:27017/test';
 
-    if (process.env.WEB_CONCURRENCY) {
-        connectionString = process.env.MONGODB_URI;
-    }
+    var connectionString = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/test';
+
+    // if (process.env.WEB_CONCURRENCY) {
+    //     connectionString = process.env.MONGODB_URI;
+    // }
 
     mongoose.connect(connectionString);
 

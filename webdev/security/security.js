@@ -6,27 +6,21 @@ module.exports = function (database, passport) {
     var FacebookStrategy = require('passport-facebook').Strategy;
     var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
     var bcrypt = require('bcrypt-nodejs');
-
-
     var projectModel = database.RateMyMoviesModels().userModel;
 
 
     var googleConfig = {
-        //clientID     : "1063331474796-dj877jbnmulhdq8dkh8sqqekhhcvjpgi.apps.googleusercontent.com",
-        clientID     : process.env.GOOGLE_CLIENT_ID || "1063331474796-dj877jbnmulhdq8dkh8sqqekhhcvjpgi.apps.googleusercontent.com",
-        //clientSecret : "WWdD6UEWdPs5p8_B5JfvKLWr",
-        clientSecret : process.env.GOOGLE_CLIENT_SECRET || "WWdD6UEWdPs5p8_B5JfvKLWr",
-        //callbackURL  : "http://127.0.0.1:3000/auth/google/callback"
-        callbackURL  : process.env.GOOGLE_CALLBACK_URL || "http://127.0.0.1:3000/auth/google/callback"
+
+        clientID     : process.env.GOOGLE_CLIENT_ID,
+        clientSecret : process.env.GOOGLE_CLIENT_SECRET,
+        callbackURL  : process.env.GOOGLE_CALLBACK_URL
     };
 
     var facebookConfig = {
-        //clientID     : "1630781540283516",
-        clientID     : process.env.FACEBOOK_CLIENT_ID || "1630781540283516",
-        //clientSecret : "89e1d59c2dac2953aa3faf7d7866bf87",
-        clientSecret : process.env.FACEBOOK_CLIENT_SECRET || "89e1d59c2dac2953aa3faf7d7866bf87",
-        //callbackURL  : "http://127.0.0.1:3000/auth/facebook/callback"
-        callbackURL  : process.env.FACEBOOK_CALLBACK_URL || "http://127.0.0.1:3000/auth/facebook/callback"
+
+        clientID     : process.env.FACEBOOK_CLIENT_ID,
+        clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
+        callbackURL  : process.env.FACEBOOK_CALLBACK_URL
     };
 
 
@@ -34,8 +28,7 @@ module.exports = function (database, passport) {
     passport.use(new GoogleStrategy(googleConfig, googleStrategy));
     passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
 
-
-
+    // serialization and deserialization
     passport.serializeUser(serializeUser);
     passport.deserializeUser(deserializeUser);
 

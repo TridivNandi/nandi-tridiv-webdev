@@ -2,7 +2,7 @@
  * Created by Tridiv on 04-04-2017.
  */
 module.exports = function (mongoose) {
-    console.log("PROJECT SERVER Review.schema.server.js");
+
     var reviewSchema = mongoose.Schema({
         title: String,
         description: String,

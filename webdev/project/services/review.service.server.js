@@ -2,7 +2,6 @@
  * Created by Tridiv on 04-04-2017.
  */
 module.exports = function (app, models) {
-    console.log("PROJECT SERVER Review.service.server.js");
 
     var movieModel = models.movieModel;
     var reviewModel = models.reviewModel;

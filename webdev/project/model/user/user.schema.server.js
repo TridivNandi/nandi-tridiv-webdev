@@ -2,7 +2,7 @@
  * Created by Tridiv on 04-04-2017.
  */
 module.exports = function (mongoose) {
-    console.log("PROJECT SERVER User.schema.server.js");
+
     var userSchema = mongoose.Schema({
         username: {type: String, required: true, unique: true},
         password: String,

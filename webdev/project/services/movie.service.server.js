@@ -2,7 +2,6 @@
  * Created by Tridiv on 04-04-2017.
  */
 module.exports = function (app, models) {
-    console.log("PROJECT SERVER Movie.service.server.js");
     var movieModel = models.movieModel;
 
     app.post('/rmm/movie', addMovie);

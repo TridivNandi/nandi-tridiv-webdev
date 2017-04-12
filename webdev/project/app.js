@@ -2,7 +2,6 @@
  * Created by Tridiv on 04-04-2017.
  */
 module.exports = function (app, database, security) {
-    console.log("PROJECT SERVER APP INITIALIZER and proxy");
 
     require("./proxy/proxy.movie.service.server")(app);
 

@@ -2,7 +2,7 @@
  * Created by Tridiv on 04-04-2017.
  */
 module.exports = function (mongoose) {
-    console.log("PROJECT SERVER User.model.server.js");
+
     var userSchema = require('./user.schema.server')(mongoose);
     var userModel = mongoose.model('RateMyMovieUser', userSchema);
 

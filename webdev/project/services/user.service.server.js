@@ -2,7 +2,6 @@
  * Created by Tridiv on 04-04-2017.
  */
 module.exports = function (app, models, security) {
-    console.log("PROJECT SERVER User.service.server.js");
 
     var movieModel = models.movieModel;
     var userModel = models.userModel;

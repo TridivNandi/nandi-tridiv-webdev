@@ -5,7 +5,7 @@ module.exports = function (app) {
 
     var http = require('http');
 
-    var TMDKey = process.env.APIKey || 'cecb0302c2c63c371dc560016e9d0f23';
+    var TMDKey = process.env.APIKey;
     var baseUrl = "api.themoviedb.org";
     var path = "/3/SEARCH_PARAM?api_key=API_KEY&language=en";
 

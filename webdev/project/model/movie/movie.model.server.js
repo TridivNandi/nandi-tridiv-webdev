@@ -2,7 +2,7 @@
  * Created by Tridiv on 04-04-2017.
  */
 module.exports = function (mongoose) {
-    console.log("PROJECT SERVER Movie.model.server.js");
+
 
     var q = require('q');
     var movieSchema = require('./movie.schema.server')(mongoose);
