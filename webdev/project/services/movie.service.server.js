@@ -2,6 +2,7 @@
  * Created by Tridiv on 04-04-2017.
  */
 module.exports = function (app, models) {
+
     var movieModel = models.movieModel;
 
     app.post('/rmm/movie', addMovie);
