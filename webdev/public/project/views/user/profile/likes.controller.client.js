@@ -61,7 +61,6 @@
                 .like(vm.user._id, movieId)
                 .then(function (response) {
                     var status = response.data;
-                    console.log(status);
                     vm.movies[index].isLiked = true;
                 });
         }
@@ -72,7 +71,6 @@
                 .unlike(vm.user._id, movieId)
                 .then(function (response) {
                     var status = response.data;
-                    console.log(status);
                     vm.movies[index].isLiked = false;
                 });
         }

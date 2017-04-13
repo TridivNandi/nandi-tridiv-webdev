@@ -11,20 +11,13 @@ module.exports = function (mongoose) {
     var api = {
         addReview: addReview,
         findAllReviewsForMovieId: findAllReviewsForMovieId,
-        //findAllReviewsForId: findAllReviewsForId,
         findAllReviewsForUserId: findAllReviewsForUserId,
-        //FindReviewById: findReviewById,
         updateReview: updateReview,
         deleteReview: deleteReview
     };
 
     return api;
 
-    // function addReview(userId, mid, review) {
-    //     review._user = userId;
-    //     review.movieId = mid;
-    //     return reviewModel.create(review);
-    // }
 
     function addReview(userId, mid, review) {
 
@@ -42,9 +35,6 @@ module.exports = function (mongoose) {
         return deferred.promise;
     }
 
-    // function findAllReviewsForMovieId(movieId) {
-    //     return reviewModel.find({movieId: movieId});
-    // }
 
     function findAllReviewsForMovieId(movieId) {
 
@@ -60,28 +50,6 @@ module.exports = function (mongoose) {
         return deferred.promise;
     }
 
-    // function findAllReviewsForId(mid) {
-    //     return reviewModel.find({movieId: mid});
-    // }
-
-    // function findAllReviewsForId(mid) {
-    //
-    //     var deferred = q.defer();
-    //     reviewModel.find({movieId: mid}, function(err, reviews){
-    //         if(err){
-    //             deferred.reject(err);
-    //         }
-    //         else{
-    //             deferred.resolve(reviews);
-    //         }
-    //     });
-    //
-    //     return deferred.promise;
-    // }
-
-    // function findReviewById(reviewId) {
-    //     return reviewModel.findById(reviewId);
-    // }
 
     function findAllReviewsForUserId(userId) {
 
@@ -96,16 +64,6 @@ module.exports = function (mongoose) {
         });
         return deferred.promise;
     }
-
-
-
-    // function updateReview(reviewId, review) {
-    //
-    //     var deferred = q.defer();
-    //     delete review._id;
-    //     review.timestamp = Date.now();
-    //     return reviewModel.update({_id: reviewId}, {$set: review});
-    // }
 
     function updateReview(reviewId, review) {
 
@@ -122,10 +80,6 @@ module.exports = function (mongoose) {
         });
         return deferred.promise;
     }
-
-    // function deleteReview(reviewId) {
-    //     return reviewModel.remove({_id: reviewId});
-    // }
 
     function deleteReview(reviewId) {
 

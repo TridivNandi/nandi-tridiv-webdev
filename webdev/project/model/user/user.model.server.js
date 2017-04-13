@@ -31,10 +31,6 @@ module.exports = function (mongoose) {
     };
     return api;
 
-    // function createUser(user) {
-    //     return userModel.create(user);
-    // }
-
     function createUser(user) {
 
         var deferred = q.defer();
@@ -48,10 +44,6 @@ module.exports = function (mongoose) {
         });
         return deferred.promise;
     }
-
-    // function findAllUsers() {
-    //     return userModel.find();
-    // }
 
     function findAllUsers() {
 
@@ -67,9 +59,6 @@ module.exports = function (mongoose) {
         return deferred.promise;
     }
 
-    // function findUserById(userId) {
-    //     return userModel.findById(userId);
-    // }
 
     function findUserById(userId) {
 
@@ -85,9 +74,6 @@ module.exports = function (mongoose) {
         return deferred.promise;
     }
 
-    // function findUserByUsername(username) {
-    //     return userModel.findOne({username: username});
-    // }
 
     function findUserByUsername(username) {
 
@@ -103,10 +89,6 @@ module.exports = function (mongoose) {
         return deferred.promise;
     }
 
-    // function findUserByCredentials(username, password) {
-    //     return userModel.findOne({username: username, password: password});
-    // }
-
     function findUserByCredentials(username, password) {
 
         var deferred = q.defer();
@@ -120,10 +102,6 @@ module.exports = function (mongoose) {
         });
         return deferred.promise;
     }
-
-    // function findUserByFacebookId(facebookId) {
-    //     return userModel.findOne({'facebook.id': facebookId});
-    // }
 
     function findUserByFacebookId(facebookId) {
 
@@ -153,10 +131,6 @@ module.exports = function (mongoose) {
         return deferred.promise;
     }
 
-    // function likeMovie(userId, mid) {
-    //     return userModel.update({_id: userId}, {$addToSet: {movieLikes: mid}});
-    // }
-
     function likeMovie(userId, mid) {
 
         var deferred = q.defer();
@@ -185,9 +159,6 @@ module.exports = function (mongoose) {
         return deferred.promise;
     }
 
-    // function isLiked(userId, mid) {
-    //     return userModel.findOne({_id: userId}, {$and: [{movieLikes: {$in: [mid]}}]});
-    // }
 
     function isLiked(userId, mid) {
 
@@ -203,10 +174,6 @@ module.exports = function (mongoose) {
         return deferred.promise;
     }
 
-    // function addFollower(userId, followerId) {
-    //     return userModel.update({_id: userId}, {$addToSet: {followers: followerId}});
-    // }
-
     function addFollower(userId, followerId) {
 
         var deferred = q.defer();
@@ -221,9 +188,6 @@ module.exports = function (mongoose) {
         return deferred.promise;
     }
 
-    // function addFollowing(userId, followingId) {
-    //     return userModel.update({_id: userId}, {$addToSet: {following: followingId}});
-    // }
 
     function addFollowing(userId, followingId) {
 
@@ -239,9 +203,6 @@ module.exports = function (mongoose) {
         return deferred.promise;
     }
 
-    // function removeFollowing(userId, followingId) {
-    //     return userModel.update({_id: userId}, {$pullAll: {following: [followingId]}});
-    // }
 
     function removeFollowing(userId, followingId) {
 
@@ -257,9 +218,7 @@ module.exports = function (mongoose) {
         return deferred.promise;
     }
 
-    // function removeFollower(userId, followerId) {
-    //     return userModel.update({_id: userId}, {$pullAll: {followers: [followerId]}});
-    // }
+
 
     function removeFollower(userId, followerId) {
 
@@ -275,9 +234,6 @@ module.exports = function (mongoose) {
         return deferred.promise;
     }
 
-    // function isFollowing(userId, followId) {
-    //     return userModel.findOne({_id: userId, following: {$in: [followId]}});
-    // }
 
     function isFollowing(userId, followId) {
 
@@ -292,10 +248,6 @@ module.exports = function (mongoose) {
         });
         return deferred.promise;
     }
-
-    // function findAllFollowingUsers(userIds) {
-    //     return userModel.find({_id: {$in: userIds}});
-    // }
 
     function findAllFollowingUsers(userIds) {
 
@@ -325,10 +277,6 @@ module.exports = function (mongoose) {
         return deferred.promise;
     }
 
-    // function updateUser(userId, user) {
-    //     delete user._id;
-    //     return userModel.update({_id: userId}, {$set: user});
-    // }
 
     function updateUser(userId, user) {
 
@@ -344,10 +292,6 @@ module.exports = function (mongoose) {
         });
         return deferred.promise;
     }
-
-    // function deleteUser(userId) {
-    //     return userModel.remove({_id: userId});
-    // }
 
     function deleteUser(userId) {
 

@@ -22,7 +22,6 @@
         vm.clear = clear;
 
         function init() {
-            console.log("In Admin client services");
             vm.selected = -1;
             UserService
                 .findAllUsersForAdmin()
@@ -47,7 +46,6 @@
         }
 
         function order(predicate) {
-            //TODO
             vm.reverse = (vm.predicate === predicate) ? !vm.reverse : false;
             vm.predicate = predicate;
         }

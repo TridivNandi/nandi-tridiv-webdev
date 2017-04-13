@@ -48,10 +48,8 @@
                 .follow(vm.user._id, vm.navUserId)
                 .then(function (response) {
                     var status = response.data;
-                    console.log(status);
                     vm.alreadyFollowing = true;
                 }, function (err) {
-                    console.log(err);
                     vm.alreadyFollowing = false;
                 });
         }
@@ -61,10 +59,8 @@
                 .unfollow(vm.user._id, vm.navUserId)
                 .then(function (response) {
                     var status = response.data;
-                    console.log(status);
                     vm.alreadyFollowing = false;
                 }, function (err) {
-                    console.log(err);
                     vm.alreadyFollowing = true;
                 });
         }
