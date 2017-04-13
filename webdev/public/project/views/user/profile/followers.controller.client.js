@@ -76,10 +76,10 @@
                 .unfollow(vm.user._id, userId)
                 .then(function (response) {
                     var status = response.data;
-                    console.log(status);
+                   // console.log(status);
                     vm.users[index].alreadyFollowing = false;
                 }, function (err) {
-                    console.log(err);
+                   // console.log(err);
                     vm.users[index].alreadyFollowing = true;
                 });
         }
